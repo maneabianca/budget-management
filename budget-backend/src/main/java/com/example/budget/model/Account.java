@@ -15,7 +15,6 @@ public class Account {
 
     private String name;
 
-    @Column(name="current_balance")
     private double currentBalance;
 
     @ManyToOne
