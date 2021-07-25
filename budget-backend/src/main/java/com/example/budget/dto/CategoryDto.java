@@ -6,11 +6,10 @@ public class CategoryDto implements Serializable {
 
     private Long id;
     private String name;
+    private String type;
+    private UserDto userDto;
 
-    public CategoryDto(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    public CategoryDto(){}
 
     public Long getId() {
         return id;
@@ -26,5 +25,21 @@ public class CategoryDto implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public UserDto getUserDto() {
+        return userDto;
+    }
+
+    public void setUserDto(UserDto userDto) {
+        this.userDto = userDto;
     }
 }

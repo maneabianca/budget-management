@@ -18,6 +18,7 @@ public class Category {
 
     private CategoryType type;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
+    @JoinColumn(name="user_id",nullable = false)
     private User user;
 }

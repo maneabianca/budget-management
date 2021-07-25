@@ -29,14 +29,22 @@ public class CategoryController {
 
     @PutMapping("/{id}/update")
     public ResponseEntity<?> updateCategory(@PathVariable Long id, @RequestBody CategoryDto categoryDto) {
-        categoryService.updateCategory(id, categoryDto);
+        try {
+            categoryService.updateCategory(id, categoryDto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 
     @DeleteMapping("/{id}/delete")
     public ResponseEntity<?> deleteCategory(@PathVariable Long id) {
-        categoryService.deleteCategory(id);
+        try {
+            categoryService.deleteCategory(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
@@ -44,7 +52,6 @@ public class CategoryController {
     //id de la user
     @GetMapping("/{id}/list")
     public ResponseEntity<?> getCategoryListByType(@PathVariable Long id, @RequestParam String type) {
-        categoryService.getCategoryListByType(id, type);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.status(HttpStatus.OK).body(categoryService.getCategoryListByType(id, type));
     }
 }
