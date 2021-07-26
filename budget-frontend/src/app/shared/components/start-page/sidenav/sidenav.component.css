@@ -1,0 +1,19 @@
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.left-content{
+  width: 300px;
+  background-color: red;
+}
+.right-content{
+  margin: 50px 20px 50px 20px;
+  width: 450px;
+}
+.main-content{
+  margin: 50px 30px 50px 30px;
+}
+

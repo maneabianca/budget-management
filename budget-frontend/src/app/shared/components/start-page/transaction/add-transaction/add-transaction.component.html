@@ -1,0 +1,99 @@
+<div class="dialog-transaction">
+  <div id="dialog-title" mat-dialog-title>Add New Transaction</div>
+  <div mat-dialog-content style="height: 400px">
+
+
+    <form class="form-transaction"
+          [formGroup]="formTransaction"
+          (submit)="submit()">
+
+
+      <p class="form-row" style="text-align: center">
+        <mat-radio-group name="type"
+                         formControlName="type"
+                         [(ngModel)]="type">
+          <mat-radio-button value="1">Expense</mat-radio-button>
+          <mat-radio-button value="2">Income</mat-radio-button>
+        </mat-radio-group>
+      </p>
+
+
+      <p class="form-row">
+        <mat-form-field class="form-full-width" appearance="fill">
+          <mat-label>Amount</mat-label>
+          <input formControlName="amount"
+                 placeholder="0.0"
+                 type="number"
+                 matInput
+                 required>
+          <mat-error *ngIf="errorHandling('amount', 'required')">
+            Please enter an<strong> amount </strong>for this transaction.
+          </mat-error>
+        </mat-form-field>
+
+
+      </p>
+      <table class="form-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="form-full-width" appearance="fill">
+              <mat-label>Choose a date</mat-label>
+              <input matInput
+                     readonly
+                     [matDatepicker]="picker"
+                     formControlName="date"
+                     required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker disabled="false"></mat-datepicker>
+              <mat-error *ngIf="errorHandling('date', 'required')">
+                Please choose the<strong> date</strong>.
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="form-full-width" appearance="fill">
+              <mat-label>Category</mat-label>
+              <mat-select *ngIf="type == '1'"
+                          [(value)]="selected"
+                          formControlName="category"
+                          required>
+                <mat-option *ngFor="let category of expenseCategories" [value]="category">
+                  {{category.name}}
+                </mat-option>
+              </mat-select>
+              <mat-select *ngIf="type == '2'"
+                          [(value)]="selected"
+                          formControlName="category"
+                          required>
+                <mat-option *ngFor="let category of incomeCategories" [value]="category">
+                  {{category.name}}
+                </mat-option>
+              </mat-select>
+              <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+              <mat-error *ngIf="errorHandling('category', 'required')">
+                Please choose a<strong> category</strong>.
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+
+      <p class="form-row">
+        <mat-form-field class="form-full-width" appearance="fill">
+          <mat-label>Note</mat-label>
+          <textarea matInput
+                    formControlName="note">
+
+          </textarea>
+        </mat-form-field>
+      </p>
+      <div style="float: right">
+        <button mat-raised-button mat-dialog-close>Close</button>
+        <button mat-raised-button color="primary">Add</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+

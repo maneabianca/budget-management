@@ -1,0 +1,23 @@
+.dialog-transaction{
+  width: 100%;
+}
+#dialog-title{
+  text-align: center;
+  font-size: 25px;
+  margin: 20px 10px 20px 10px;
+}
+.form-transaction{
+  width:100%;
+}
+.form-full-width {
+  width: 100%;
+}
+.form-row{
+  margin:20px 0 20px 0;
+}
+td {
+  padding-right: 8px;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
